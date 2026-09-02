@@ -1,6 +1,6 @@
 # Project 1: Sockets, Mininet, and Performance
 
-### Due: September 17, 2025 (11:59 PM)
+### Due: September 21, 2026 (11:59 PM)
 
 In this project, you will create your own simplified version of [iPerf](https://iperf.fr/), a widely used network measurement tool. This project has the following goals:
 - Learn how to set up and use [Mininet](https://mininet.org/), a widely-used network emulation software that enables you to create custom network topologies and test your code all on a single machine. This will be used again in Project 4, and is a useful tool for Projects 2 and 3. 
@@ -40,13 +40,13 @@ We have decided not to prescribe a certain virtual machine for you to use; you m
 > Note: We encourage you to use GitHub for code versioning and remote backups. Please make sure that any GitHub repository you create for your code in this class is **private**. Creating a public repository with your code, even if by accident, is considered a violation of the Honor Code. If you come across any public GitHub repositories with code for this project, please inform the instructors immediately. 
 
 ### CMake and Useful Libraries
-One tool that is very common in the real world, but is seldom taught in classes are build systems (of which CMake is one). Build systems allow you to declaratively specify what programs can be built, and what dependencies each program has within a codebase.
+One tool that is very common in the real world, but is seldom taught in classes is a build system (of which CMake is one). Build systems allow you to declaratively specify what programs can be built, and what dependencies each program has within a codebase.
 
-For this project, you will be using CMake to build `iPerfer`. You will be using in external dependencies to both make your life easier, and to get used to working with other people's code. These dependencies are:
+For this project, you will be using CMake to build `iPerfer`. You will be using external dependencies to both make your life easier, and to get used to working with other people's code. These dependencies are:
 1. `cxxopts`: No one likes dealing with `getopt.h`. `cxxopts` allows you to easily define and use command line arguments for your program.
 2. `spdlog`: Good logging is essential for real world programs. `spdlog` is a logging library that makes this easier. The library provides several levels of logging; the three most commonly used levels are `error`, `info`, and `debug`. Setting a certain logging level prints all messages at that level or lower (e.g. `error` is the lowest and `debug` is the highest here). 
 
-To show the value of these tools, imagine accepting an server/client config and port as arguments, and then logging that you're listening/sending to that port. With these tools, it's as simple as:
+To show the value of these tools, imagine accepting a server/client config and port as arguments, and then logging that you're listening/sending to that port. With these tools, it's as simple as:
 
 ```
     cxxopts::Options options("iPerfer", "A simple network performance measurement tool");
@@ -59,7 +59,7 @@ To show the value of these tools, imagine accepting an server/client config and 
     auto is_server = result["server"].as<bool>();
     auto port = result["port"].as<int>();
 
-    spdlog::debug("About to check port number...")
+    spdlog::debug("About to check port number...");
     if (port < 1024 || port > 0xFFFF) {
       spdlog::error("Port number should be in interval [1024, 65535]; instead received {}", port); 
       return; 
@@ -203,7 +203,7 @@ easily replicable, so you don't have to type in the same commands over and over 
 
 #### Option 3: Use background processes to do it natively (Painful)
 The naive way to do this using just one terminal is to run commands in hosts as background processes (using `&` in the shell), allowing you to 
-run multiple processes at once from a single shell. This becomes tedious and unweildy very quickly, and we do not recommend it. 
+run multiple processes at once from a single shell. This becomes tedious and unwieldy very quickly, and we do not recommend it. 
 
 <a name="part2"></a>
 ## Part 2: Create a Custom Mininet Topology
@@ -221,7 +221,7 @@ These deliverables should be stored in a `topology` folder at the top-level of y
 
 In this portion of the assignment, you will write your own version of `iPerf` to estimate the throughput between two hosts. Your tool, called `iPerfer`, will send and receive TCP packets between a pair of hosts using TCP sockets.
 
-> **NOTE:** You may refer to [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/html/) for socket programming. Discussion sections will also review the some of the basics.
+> **NOTE:** You may refer to [Beej's Guide to Network Programming Using Internet Sockets](https://beej.us/guide/bgnet/html/) for socket programming. Discussion sections will also review some of the basics.
 
 `iPerfer` can run in either *client mode* or *server mode*. 
 
@@ -362,11 +362,11 @@ For example:
 
 ### Testing
 
-You can test `iPerfer` on any machines you have access to. However, be aware the certain ports may be blocked by firewalls on end hosts or in the network, so you may not be able to test your program on all hosts or in all networks.
+You can test `iPerfer` on any machines you have access to. However, be aware that certain ports may be blocked by firewalls on end hosts or in the network, so you may not be able to test your program on all hosts or in all networks.
 
 The primary mode for testing should be using Mininet. You should complete [Part 1](#part1) of this assignment before attempting that.
 
-The autograder will be released about halfway through the assignment. Instructions for submission are [here](#submission-instr). It is not meant to be your primary source of testing/debugging, but is rather intended for you to see your overall progress. You are free to use `spdlog::debug` to output debug logs, but you should not output any `error` or `info` logs not specified in this specification. 
+Instructions for submission are [here](#submission-instr). It is not meant to be your primary source of testing/debugging, but is rather intended for you to see your overall progress. You are free to use `spdlog::debug` to output debug logs, but you should not output any `error` or `info` logs not specified in this specification. 
 
 ### Tips
 
@@ -377,7 +377,7 @@ The autograder will be released about halfway through the assignment. Instructio
 your bandwidth estimate may not be as accurate. 
 
 ### FAQ
-Check out this list of commonly asked questions and answers from Ed last semester. [FAQ](P1_FAQ.md)
+Check out this list of commonly asked questions and answers from Ed in previous semesters. [FAQ](P1_FAQ.md)
 
 1. **Why don't we need to worry about dropped packets here?** Dropped packets are not a concern because we are using TCP sockets, which takes care of reliable, in-order packet delivery for us. We will learn how to implement our own reliable transport protocol in Project 3!
 2. [This section will be updated as questions arise]
@@ -495,7 +495,7 @@ We do not *explicitly* check that:
 - The data in the messages is exactly what is specified. We specify this to possibly make debugging easier, but we don't care (and it doesn't affect the final output). 
 - Your error messages when invalid or missing arguments exist are exactly what is specified. Once again, this is specified to make debugging easier. 
 
-The Autograder is new this semester; if you feel like you are failing some test cases for some reason other than your code being incorrect, please let us know by posting on Ed.   
+If you feel like you are failing some test cases for some reason other than your code being incorrect, please let us know by posting on Piazza.   
 
 ### Gradescope Submission
 Submit a PDF to Gradescope that contains:
