@@ -254,7 +254,7 @@ The two propagation delays added together is also called the Roundtrip Time (RTT
 
 ### Setup
 
-To setup the build system, you must complete the `CMakeLists.txt` files under the `cpp/` directory. We have already completed `cpp/CMakeLists.txt` for you. You should fill in `cpp/src/CMakeLists.txt` to compile a program called `iPerfer`. We have included the code to link the external dependencies as a comment in this file.The basics section of ["An Introduction to Modern CMake"](https://cliutils.gitlab.io/modern-cmake/chapters/basics.html) should be more than sufficient to get you through this part. 
+To setup the build system, you must complete the `CMakeLists.txt` files under the `cpp/` directory. We have already completed `cpp/CMakeLists.txt` for you. You should fill in `cpp/src/CMakeLists.txt` to compile a program called `iPerfer`. We have included the code to link the external dependencies as a comment in this file.The basics section of ["CMake Tutorial"](https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/index.html) should be more than sufficient to get you through this part. 
 
 To build your CMake program, you *can* use the command line, but we recommend that you use IDE tools instead. For VSCode, this is pretty easy. Simply install the "CMake Tools" extension. Then, open the command pallette, and run "CMake: Configure" (select "Unspecified" if it asks you what kit to use). This will let you get Intellisense (autocomplete) on external dependencies. Then, to run the program, in the command pallette, hit "CMake: Build". This will build your project, creating an executable in the `build/bin/` directory. 
 
