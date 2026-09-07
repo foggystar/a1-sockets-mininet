@@ -311,7 +311,7 @@ The server should respond to the first eight (1-byte) packets with 1-byte ACK pa
 
 After the client has closed the connection, `iPerfer` server must print a one-line summary in the following format using the `info` level of `spdlog`:
 
-`Received=X KB, Rate=Y Mbps, RTT=Z ms`
+`Received=X KB, Rate=Y Mbps, RTT=Zms`
 
 where X stands for the total number of bytes received (in kilobytes), Y stands for the rate at which traffic could be read in megabits per second (Mbps), and Z stands for the estimated RTT (in milliseconds). Note X and Z should be integers and Y should be a decimal with **three digits** after the decimal mark (e.g. `spdlog::info("{:.3f}", my_num)`). There are no characters after the `ms`, but there should be a newline.
 
@@ -351,7 +351,7 @@ Data should be sent in chunks of 80KB and the data should be all zeros (note: th
 
 `iPerfer` client must log a one-line summary using `spdlog::info` in the following format:
 
-`Sent=X KB, Rate=Y Mbps, RTT=Z ms`
+`Sent=X KB, Rate=Y Mbps, RTT=Zms`
 
 where X stands for the total number of bytes sent (in kilobytes), Y stands for the rate at which traffic could be written in megabits per second (Mbps), and Z stands for the estimated RTT (in milliseconds). Note X and Z should be integers and Y should be a decimal with **three digits** after the decimal mark (e.g. `spdlog::info("{:.3f}", my_num)`). There are no characters after the `ms`, but there should be a newline.
 
